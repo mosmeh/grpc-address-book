@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package address_book;
+
+import "google/protobuf/empty.proto";
+
+service AddressBook {
+    rpc CreatePerson(CreatePersonRequest) returns (CreatePersonResponse);
+    rpc GetPerson(GetPersonRequest) returns (GetPersonResponse);
+    rpc ListPeople(google.protobuf.Empty) returns (ListPeopleResponse);
+    rpc SearchPeople(SearchPeopleRequest) returns (SearchPeopleResponse);
+    rpc UpdatePerson(UpdatePersonRequest) returns (google.protobuf.Empty);
+    rpc DeletePerson(DeletePersonRequest) returns (google.protobuf.Empty);
+}
+
+message Person {
+    string uuid = 1;
+    string name = 2;
+    optional string email = 3;
+}
+
+message CreatePersonRequest {
+    string name = 1;
+    optional string email = 2;
+}
+
+message CreatePersonResponse {
+    string uuid = 1;
+}
+
+message GetPersonRequest {
+    string uuid = 1;
+}
+
+message GetPersonResponse {
+    Person person = 1;
+}
+
+message ListPeopleResponse {
+    repeated Person people = 1;
+}
+
+message SearchPeopleRequest {
+    optional string name = 1;
+    optional string email = 2;
+}
+
+message SearchPeopleResponse {
+    repeated Person people = 1;
+}
+
+message UpdatePersonRequest {
+    string uuid = 1;
+    optional string name = 2;
+    optional string email = 3;
+}
+
+message DeletePersonRequest {
+    string uuid = 1;
+}

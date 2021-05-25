@@ -1,0 +1,20 @@
+[package]
+name = "grpc-address-book"
+version = "0.1.0"
+authors = ["mosm <airman515@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.40"
+async-trait = "0.1.50"
+dotenv = "0.15.0"
+env_logger = "0.8.3"
+prost = "0.7.0"
+sqlx = { version = "0.5.5", features = ["runtime-tokio-rustls", "postgres", "uuid", "migrate", "offline"] }
+structopt = "0.3.21"
+tokio = { version = "1.6.0", features = ["rt-multi-thread", "macros"] }
+tonic = "0.4.3"
+uuid = { version = "0.8.2", features = ["v4"] }
+
+[build-dependencies]
+tonic-build = "0.4.2"
